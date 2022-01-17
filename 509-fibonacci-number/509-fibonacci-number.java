@@ -1,6 +1,13 @@
+import java.util.HashMap; // import the HashMap class
+
 class Solution {
+    Map<Integer, Integer> mem = new HashMap<>();
     public int fib(int n) {
-        //Map<Integer,Integer> mem = new HashMap<>();
+        
+        
+    
+                                    
+       // RECURSIVE SOLUTION
         if(n == 0){
             return 0;
         }
@@ -8,7 +15,14 @@ class Solution {
             return 1;
         }
         else{
-            return fib(n-1) + fib(n-2);
+            if(mem.containsKey(n)){
+                return mem.get(n);
+            }
+            else{
+                mem.put(n,(fib(n-1) + fib(n-2)));
+                return mem.get(n);
+            }
+            
         }
         
     }
