@@ -4,27 +4,20 @@
 # It returns index of x in given array arr if present,
 # else returns -1
 def binary_search(arr, x):
-    low = 0
-    high = len(arr) - 1
-    mid = 0
+    low, high = 0, len(arr)-1   # initialize low and high pointers
 
-    while low <= high:
+    while (low <= high):  # perform binary search
 
-        mid = (high + low) // 2
+        mid = (high+low)//2         # compute mid index
 
-        # If x is greater, ignore left half
-        if x > arr[mid]:
-            low = mid + 1
-
-        # If x is smaller, ignore right half
-        elif x < arr[mid]:
-            high = mid - 1
-
-        # means x is present at mid
-        else:
+        if arr[mid] == x:     # if mid element is equal to x, return mid index
             return mid
 
-    # If we reach here, then the element was not present
+        if arr[mid] > x:        # if mid element is greater than target, set high pointer to mid-1
+            high = mid-1
+
+        else:                       # if mid element is less than target, set low pointer to mid+1
+            low = mid+1
     return -1
 
 
